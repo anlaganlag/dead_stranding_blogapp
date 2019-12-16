@@ -12,6 +12,14 @@
             </ul> 
             <ul class="nav navbar-nav navbar-right" style="margin-right:10px">
            {% if user.is_authenticated %} 
+           <div class="dropdown" style="margin-top:8px">
+                        <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu' data-toggle='dropdown'>{{ user.username }}
+                            <span class='caret'></span> 
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
+                            <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
+                        </ul.
            <li><a href='#'>{{ user.username.upper }}</a></li>
            <li><a href="{% url 'account:user_logout' %}">LOGOUT</a></li>
            {% else %}
@@ -32,12 +40,6 @@
             <ul class="nav navbar-nav navbar-right" style="margin-right:10px"> 
                 {% if user.is_authenticated %}
                 <li>
-                    <div class="dropdown" style="margin-top:8px">
-                        <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu' data-toggle='dropdown'>{{ user.username }}
-                            <span class='caret'></span> 
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
                             <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
                             <li><a href="{% url 'article:article_column' %}">后台管理</a></li>
                         </ul> 
@@ -53,7 +55,7 @@
     </nav>
 </div>
 
-<script src="{% static 'js/jquery.js' %}"></script> 
-<script src="{% static 'js/bootstrap.js' %}"></script>
 
 {% endcomment %}    
+<script src="{% static 'js/jquery.js' %}"></script> 
+<script src="{% static 'js/bootstrap.js' %}"></script>

@@ -13,18 +13,14 @@
     {% endif %}
 
     <p>Input your username and password</p>
-    <form class="form-horizontal"
-          action="{% url 'account:user_login' %}"
-          method="post" >
-{% csrf_token %}
 
-{% comment %}
     {% if next %}
     <form class="form-horizontal" action="{% url 'account:user_login' %}?next={{next}}" method="post" >
     {% else %}
     <form class="form-horizontal" action="{% url 'account:user_login' %}" method="post">
+
     {% endif %}    
-{% endcomment %}
+        {% csrf_token %}
 
       <div class="form-group">
 

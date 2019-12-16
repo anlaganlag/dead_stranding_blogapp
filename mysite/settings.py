@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -122,3 +122,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join(BASE_DIR,'static'),)
 LOGIN_REDIRECT_URL = '/blog/'
+LOGIN_URL = '/account/login/'
+
+#EMAIL_HOST = 'smtp.163.com'
+#EMAIL_HOST_USER = 'tanjhu@163.com'
+#EMAIL_HOST_PASSWORD = 'wylogin333'
+#EMAIL_PORT = 25
+#EMAIL_USE_TLS = True
+#DEFAULT_FROM_EMAIL = 'tanjhu@163.com'
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST_USER = '693492858@qq.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = '693492858@qq.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
