@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <link rel="stylesheet" href="{% static 'css/imagecrop.css' %}"> 
 <div class="container">
     <div class="imageBox">
@@ -8,9 +8,8 @@
 
     <div class="action">
         <!-- <input type="file" id="file" style=" width: 200px">-->
-        <div class="new-contentarea tc"> 
-            <a href="javascript:void(0)" class="upload-img">
-                <label for="upload-file">请先选择图片...</label>
+        <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
+            <label for="upload-file">请先选择图片...</label>
             </a>
             <input type="file" class="" name="upload-file" id="upload-file" />
         </div>
@@ -25,33 +24,36 @@
 <script type="text/javascript" src="{% static 'js/cropbox-min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/csrf.js' %}"></script>
 <script type="text/javascript">
-    $(window).load(function() { 
-        var options =
-        {
-            thumbBox: '.thumbBox', 
-            spinner: '.spinner', 
-            imgSrc: ''
-        }
-        var cropper = $('.imageBox').cropbox(options); 
-        var img="";
-        $('#upload-file').on('change', function(){
-            var reader = new FileReader(); 
-            reader.onload = function(e) {
-                options.imgSrc = e.target.result;
-                cropper = $('.imageBox').cropbox(options); 
-                //getImg();
-            } 
-            reader.readAsDataURL(this.files[0]); 
-            //this.files = [];
-        })
-        $('#btnCrop').on('click', function(){
+$(window).load(function() { 
+    var options =
+    {
+        thumbBox: '.thumbBox', 
+        spinner: '.spinner', 
+        imgSrc: ''
+    }
+    var cropper = $('.imageBox').cropbox(options); 
+    var img="";
+    $('#upload-file').on('change', function(){
+        var reader = new FileReader(); 
+        reader.onload = function(e) {
+            options.imgSrc = e.target.result;
+            cropper = $('.imageBox').cropbox(options); 
+            //getImg();
+        } 
+        reader.readAsDataURL(this.files[0]); 
+        //this.files = [];
+    })
+    $('#btnCrop').on('click', function(){
             //alert("图片上传喽"); 
             $.ajax({
                 url: '{% url "account:my_image" %}', 
                 type: 'POST',
                 data: {"img": img},
                 success: function(e){
-                    //location.href= "{% url 'account:my_information' %}" },
+                    location.href= "{% url 'account:my_information' %}" },
+                    });
+                    })
+                    {% comment %}
                     if(e == "1"){ 
                         parent.location.reload();
                     } else {
@@ -60,6 +62,7 @@
                 }
                 });
         })
+        {% endcomment %}
     
         function getImg(){
             img = cropper.getDataURL();
