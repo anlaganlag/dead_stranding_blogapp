@@ -24,6 +24,8 @@
            <li><a href="{% url 'account:user_logout' %}">LOGOUT</a></li>
            {% else %}
             <li><a href="{% url 'account:user_login' %}">Extinctionning</a></li> 
+
+            <li><a href="{% url 'article:article_column' %}">后台管理</a></li>
             {% endif %}
             </ul>
         </div>
